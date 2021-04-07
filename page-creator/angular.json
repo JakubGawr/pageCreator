@@ -1,0 +1,200 @@
+{
+  "version": 1,
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "creator-fe",
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "projects": {
+    "creator-fe": {
+      "projectType": "application",
+      "root": "apps/creator-fe",
+      "sourceRoot": "apps/creator-fe/src",
+      "prefix": "page-creator",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/creator-fe",
+            "index": "apps/creator-fe/src/index.html",
+            "main": "apps/creator-fe/src/main.ts",
+            "polyfills": "apps/creator-fe/src/polyfills.ts",
+            "tsConfig": "apps/creator-fe/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/creator-fe/src/favicon.ico",
+              "apps/creator-fe/src/assets"
+            ],
+            "styles": ["apps/creator-fe/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/creator-fe/src/environments/environment.ts",
+                  "with": "apps/creator-fe/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "creator-fe:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "creator-fe:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "creator-fe:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/creator-fe/src/**/*.ts",
+              "apps/creator-fe/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/creator-fe"],
+          "options": {
+            "jestConfig": "apps/creator-fe/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "creator-fe-e2e": {
+      "root": "apps/creator-fe-e2e",
+      "sourceRoot": "apps/creator-fe-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/creator-fe-e2e/cypress.json",
+            "tsConfig": "apps/creator-fe-e2e/tsconfig.e2e.json",
+            "devServerTarget": "creator-fe:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "creator-fe:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/creator-fe-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "creator-be": {
+      "root": "apps/creator-be",
+      "sourceRoot": "apps/creator-be/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/creator-be",
+            "main": "apps/creator-be/src/main.ts",
+            "tsConfig": "apps/creator-be/tsconfig.app.json",
+            "assets": ["apps/creator-be/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/creator-be/src/environments/environment.ts",
+                  "with": "apps/creator-be/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "creator-be:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/creator-be/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/creator-be"],
+          "options": {
+            "jestConfig": "apps/creator-be/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  }
+}
