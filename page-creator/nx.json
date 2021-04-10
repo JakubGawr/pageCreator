@@ -18,6 +18,8 @@
   "projects": {
     "creator-fe": { "tags": [] },
     "creator-fe-e2e": { "tags": [], "implicitDependencies": ["creator-fe"] },
-    "creator-be": { "tags": [] }
+    "creator-be": { "tags": [] },
+    "frontend-dashboard": { "tags": [] },
+    "shared-concept": { "tags": [] }
   }
 }

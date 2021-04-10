@@ -1,0 +1,5 @@
+.l-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(111px, 1fr));
+  margin: 0 auto;
+}

@@ -195,6 +195,52 @@
           }
         }
       }
+    },
+    "frontend-dashboard": {
+      "projectType": "library",
+      "root": "libs/frontend/dashboard",
+      "sourceRoot": "libs/frontend/dashboard/src",
+      "prefix": "page-creator",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/frontend/dashboard/src/**/*.ts",
+              "libs/frontend/dashboard/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/frontend/dashboard"],
+          "options": {
+            "jestConfig": "libs/frontend/dashboard/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-concept": {
+      "root": "libs/shared/concept",
+      "sourceRoot": "libs/shared/concept/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/concept/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/concept"],
+          "options": {
+            "jestConfig": "libs/shared/concept/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

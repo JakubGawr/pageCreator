@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@page-creator/frontend/dashboard": [
+        "libs/frontend/dashboard/src/index.ts"
+      ],
+      "@page-creator/shared/concept": ["libs/shared/concept/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
