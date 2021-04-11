@@ -18,7 +18,11 @@
       "@page-creator/frontend/dashboard": [
         "libs/frontend/dashboard/src/index.ts"
       ],
-      "@page-creator/shared/concept": ["libs/shared/concept/src/index.ts"]
+      "@page-creator/shared/concept": ["libs/shared/concept/src/index.ts"],
+      "@page-creator/widgets": ["libs/widgets/src/index.ts"],
+      "@page-creator/frontend/view-state": [
+        "libs/frontend/view-state/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

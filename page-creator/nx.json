@@ -20,6 +20,8 @@
     "creator-fe-e2e": { "tags": [], "implicitDependencies": ["creator-fe"] },
     "creator-be": { "tags": [] },
     "frontend-dashboard": { "tags": [] },
-    "shared-concept": { "tags": [] }
+    "shared-concept": { "tags": [] },
+    "widgets": { "tags": [] },
+    "frontend-view-state": { "tags": [] }
   }
 }
