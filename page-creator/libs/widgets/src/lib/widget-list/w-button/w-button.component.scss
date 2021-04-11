@@ -1,0 +1,13 @@
+:host {
+  position: absolute;
+  display: block;
+}
+.line{
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(270deg);
+  background: red;
+  height: 1px;
+  transform-origin: 0 top;
+}

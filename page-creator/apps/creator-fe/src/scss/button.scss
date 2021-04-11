@@ -1,0 +1,11 @@
+.c-btn {
+  display: inline-block;
+  padding: var(--tetiary-padding) var(--secondary-padding) ;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+  &--floating {
+    position: absolute;
+  }
+}
